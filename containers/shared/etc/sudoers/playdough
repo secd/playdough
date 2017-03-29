@@ -1,0 +1,21 @@
+## ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ##
+##     P L A Y . D O U G H     ##
+## ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ##
+
+User_Alias     OPERATORS = u_blued, u_playdough_adm
+Runas_Alias    OP = root, operator
+Runas_Alias    PD = u_playdough, u_playdough_adm, u_playdough_data, u_playdough_proc
+Host_Alias     OFNET = 10.1.2.0/255.255.255.0
+Cmnd_Alias     BOUNCING = /usr/sbin/shutdown, /usr/sbin/reboot
+
+## Admin access with a password
+u_blued ALL=(OP) NOPASSWD: ALL
+
+## OPERATORS access without a password
+OPERATORS ALL=(PD) NOPASSWD: ALL
+
+## OPERATORS access without a password
+OPERATORS ALL=(OP) NOPASSWD: BOUNCING
+
+## Admin access without a password
+%wheel ALL=(ALL) NOPASSWD: ALL
